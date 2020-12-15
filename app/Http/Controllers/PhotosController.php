@@ -17,9 +17,11 @@ class PhotosController extends Controller
         $request = Http::get('https://pixabay.com/api/',[
             'key' => '19526874-64b4c52794e0c049098c28714',
         ]);
-        $response = $request->getBody()->getContents();
-
-        return view('photos.index');
+        $response = json_decode($request->getBody()->getContents(), true);
+        foreach($response['hits'] as $photos => $photo){
+            var_dump($photo['largeImageURL']);
+        }
+        //return view('photos.index');
     }
 
     /**
