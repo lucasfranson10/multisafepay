@@ -21,7 +21,7 @@ class PhotosController extends Controller
        /*  foreach($response['hits'] as $photos => $photo){
             var_dump($photo['largeImageURL']);
         } */
-        return view('photos.index');
+        return view('photos.index', ['photos' => $response['hits']]);
     }
 
     /**
