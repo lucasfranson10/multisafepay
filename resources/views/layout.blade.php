@@ -12,8 +12,12 @@
 <header>
 
 	<div class="container">
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <a href="#about">Saved</a>
+      <input type="text" placeholder="Search..">
+    </div>
 
-        <h1> header </h1>
 	</div>
 	<!-- End of container -->
 
