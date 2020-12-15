@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
 
@@ -13,6 +14,11 @@ class PhotosController extends Controller
      */
     public function index()
     {
+        $request = Http::get('https://pixabay.com/api/',[
+            'key' => '19526874-64b4c52794e0c049098c28714',
+        ]);
+        $response = $request->getBody()->getContents();
+
         return view('photos.index');
     }
 
