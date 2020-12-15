@@ -18,10 +18,10 @@ class PhotosController extends Controller
             'key' => '19526874-64b4c52794e0c049098c28714',
         ]);
         $response = json_decode($request->getBody()->getContents(), true);
-        foreach($response['hits'] as $photos => $photo){
+       /*  foreach($response['hits'] as $photos => $photo){
             var_dump($photo['largeImageURL']);
-        }
-        //return view('photos.index');
+        } */
+        return view('photos.index');
     }
 
     /**
