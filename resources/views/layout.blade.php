@@ -13,9 +13,14 @@
 
 	<div class="container">
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#about">Saved</a>
-      <input type="text" placeholder="Search..">
+      <a class="active" href="/">Home</a>
+      <a href="/saved">Photos</a>
+      <div class="search-container">
+        <form action="/">
+          <input class="inputSea" type="text" placeholder="Search..." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
     </div>
 
 	</div>

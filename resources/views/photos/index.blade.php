@@ -14,10 +14,16 @@
 
 					<img src={{$photo['largeImageURL']}} class="gallery-image" alt="">
 
-					<div class="gallery-item-info">
+					{{-- <div class="gallery-item-info">
 
 						<h1>teste</h1>
 
+					</div> --}}
+
+					<div>
+						<button class="button">
+							Save photo
+						</button>
 					</div>
 
 				</div>

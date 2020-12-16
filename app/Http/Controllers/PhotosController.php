@@ -12,15 +12,14 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $request = Http::get('https://pixabay.com/api/',[
+        $search = str_replace(' ', "+", $request->input('search'));
+        $pixa = Http::get('https://pixabay.com/api/',[
             'key' => '19526874-64b4c52794e0c049098c28714',
+            'q' => $search,
         ]);
-        $response = json_decode($request->getBody()->getContents(), true);
-       /*  foreach($response['hits'] as $photos => $photo){
-            var_dump($photo['largeImageURL']);
-        } */
+        $response = json_decode($pixa->getBody()->getContents(), true);
         return view('photos.index', ['photos' => $response['hits']]);
     }
 
@@ -35,58 +34,14 @@ class PhotosController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        echo "teste";
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -1,12 +1,16 @@
-/* Add a black background color to the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #ffffff;
-  margin-bottom: 20px;
-  margin-top: 20px;
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Style the links inside the navigation bar */
+.topnav {
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .topnav a {
   float: left;
   display: block;
@@ -17,31 +21,48 @@
   font-size: 17px;
 }
 
-/* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgb(207, 204, 204);
   color: black;
 }
 
-/* Style the "active" element to highlight the current page */
 .topnav a.active {
-  background-color: #00060a;
+  background-color: #000000;
   color: white;
 }
 
-/* Style the search box inside the navigation bar */
-.topnav input[type=text] {
+.topnav .search-container {
   float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
 }
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: 2px solid black;
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 8px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
 @media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
     float: none;
     display: block;
     text-align: left;
@@ -50,7 +71,7 @@
     padding: 14px;
   }
   .topnav input[type=text] {
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid #ccc;  
   }
 }
 
@@ -218,6 +239,30 @@ img {
     cursor: pointer;
 }
 
+.button {
+    background-color: #000000;
+    color: black;;
+    border: none;
+    color: white;
+    padding: 4px 98.6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 2px;
+    border-radius: 4px;
+    
+  }
+.button {
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: #b6b0b0; /* Green */
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
 .gallery-item:hover .gallery-item-info,
 .gallery-item:focus .gallery-item-info {
     display: flex;
@@ -374,22 +419,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
 */
 
 @supports (display: grid) {
-    .profile {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: repeat(3, auto);
-        grid-column-gap: 3rem;
-        align-items: center;
-    }
-
-    .profile-image {
-        grid-row: 1 / -1;
-    }
-
     .gallery {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-        grid-gap: 2rem;
+        grid-gap: 3rem;
     }
 
     .profile-image,

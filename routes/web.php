@@ -19,4 +19,6 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 
-Route::get('/', [ PhotosController::Class, 'index' ])->name('articles.index');
+Route::get('/', [ PhotosController::Class, 'index' ])->name('photos.index');
+Route::get('/show/{photo}', [ PhotosController::Class, 'show' ])->name('photos.show');
+
