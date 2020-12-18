@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
-
 Route::get('/', [ PhotosController::Class, 'index' ])->name('photos.index');
 Route::post('/save', [ PhotosController::Class, 'create' ])->name('photos.create');
+Route::get('/saved', [ PhotosController::Class, 'show' ])->name('photos.show');
+
+
 

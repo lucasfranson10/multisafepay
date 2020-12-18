@@ -33,10 +33,23 @@ class PhotosController extends Controller
         $url = json_decode(request('photo'));
         $contents = file_get_contents($url);
         $name = substr($url, strrpos($url, '/') + 1);
-        Storage::disk('public')->put($name, $contents);
-        Photos::create(['photo' => $name,]); 
+        Storage::put($name, $contents);
+        Photos::firstOrCreate(['photo' => $name,]);
         
-        //return redirect(route('photos.index'));
+        return redirect(route('photos.index'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+        return view('photos.show', ['photos' => Photos::all()]);
+    }
+
+
 
 }
