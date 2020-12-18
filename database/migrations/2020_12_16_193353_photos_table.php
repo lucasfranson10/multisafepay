@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGuzzlePostsTable extends Migration
+class PhotosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateGuzzlePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('guzzle_posts', function (Blueprint $table) {
+        Schema::create('Photos', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->text('avatar')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateGuzzlePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guzzle_posts');
+        Schema::dropIfExists('Photos');
     }
 }

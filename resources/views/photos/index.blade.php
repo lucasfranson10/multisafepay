@@ -4,6 +4,7 @@
 
 
 <main>
+	
 
 	<div class="container">
 
@@ -21,9 +22,11 @@
 					</div> --}}
 
 					<div>
-						<button class="button">
-							Save photo
-						</button>
+						<form id="saveForm" name="saveForm" method="POST" action="/save">
+							@csrf
+							<input type="json" name="photo" value={{json_encode($photo['largeImageURL'])}} hidden/>
+							<button type="submit" class="button">Save photo</button>
+						</form>
 					</div>
 
 				</div>

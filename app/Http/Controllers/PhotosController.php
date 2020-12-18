@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Photos;
 
 class PhotosController extends Controller
 {
@@ -12,9 +12,9 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $search = str_replace(' ', "+", $request->input('search'));
+        $search = str_replace(' ', "+", request('search'));
         $pixa = Http::get('https://pixabay.com/api/',[
             'key' => '19526874-64b4c52794e0c049098c28714',
             'q' => $search,
@@ -30,18 +30,13 @@ class PhotosController extends Controller
      */
     public function create()
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        echo "teste";
+        $url = json_decode(request('photo'))    ;
+        $contents = file_get_contents($url);
+        $name = substr($url, strrpos($url, '/') + 1);
+        $teste = Storage::put($name, $contents);    
+        var_dump($teste);
+        //return redirect(route('photos.index'));
     }
 
 }
