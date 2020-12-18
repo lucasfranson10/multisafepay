@@ -13,10 +13,9 @@ class PhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('Photos', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('avatar')->nullable();
+            $table->string('photo', 255)->unique();
             $table->timestamps();
         });
     }

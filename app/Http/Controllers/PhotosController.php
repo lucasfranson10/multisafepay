@@ -30,12 +30,12 @@ class PhotosController extends Controller
      */
     public function create()
     {
-
-        $url = json_decode(request('photo'))    ;
+        $url = json_decode(request('photo'));
         $contents = file_get_contents($url);
         $name = substr($url, strrpos($url, '/') + 1);
-        $teste = Storage::put($name, $contents);    
-        var_dump($teste);
+        Storage::disk('public')->put($name, $contents);
+        Photos::create(['photo' => $name,]); 
+        
         //return redirect(route('photos.index'));
     }
 
