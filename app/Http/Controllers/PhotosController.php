@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+
 use App\Models\Photos;
 
 class PhotosController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * Resources are save in cache by Redis.
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -24,7 +25,7 @@ class PhotosController extends Controller
                 'q' => $search,
             ]);
             $response = json_decode($pixa->getBody()->getContents(), true);
-            Cache::put($search, $response, 86400);
+            Cache::put($search, $response,  now()->addHour(24));
         }
         
         return view('photos.index', ['photos' => $response['hits']]);
