@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 use App\Models\Photos;
 
 class PhotosController extends Controller
@@ -15,11 +16,17 @@ class PhotosController extends Controller
     public function index()
     {
         $search = str_replace(' ', "+", request('search'));
-        $pixa = Http::get('https://pixabay.com/api/',[
-            'key' => '19526874-64b4c52794e0c049098c28714',
-            'q' => $search,
-        ]);
-        $response = json_decode($pixa->getBody()->getContents(), true);
+        if (Cache::has($search)) {
+            $response = Cache::get($search);
+        }else{
+            $pixa = Http::get('https://pixabay.com/api/',[
+                'key' => env('PIXABAY_KEY'),
+                'q' => $search,
+            ]);
+            $response = json_decode($pixa->getBody()->getContents(), true);
+            Cache::put($search, $response, 86400);
+        }
+        
         return view('photos.index', ['photos' => $response['hits']]);
     }
 
