@@ -1,62 +1,41 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About App
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This application was developed for a job interview. The problem statement is defined below:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Build a simple application using Laravel and your preferred css frontend stack, Bootstrap or anything you like, use Vue if you want, but this is not important, do not overcomplicate, we are focusing on backend skills.
+ 
+The goal of the application is to search Pixabay photos and display the first page of results.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Pixabay allows you to register for free Access for API with a 5000 requests limit per hour, but needs to cache already made requests for 24h (from term and conditions).
+Under each photo display a link of Save, that would save in local storage a copy of the best quality image and create additionally a smaller version  of it as thumbnail and save it’s info in the DB.
 
-## Learning Laravel
+If same search is done within less than 24h, it should be retrieved from cache and should post a message above the results with how much time there is until cache expires for this search.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Have another page, example `/saved`, that would list saved photos, using the saved info from db.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Things to consider:
 
-## Laravel Sponsors
+Use Guzzle for http communication with the API (https://laravel.com/docs/8.x/http-client)
+Make sure you cache api communication (https://laravel.com/docs/8.x/cache)
+When an save is triggered, use queues to trigger the process (https://laravel.com/docs/8.x/queues) and just display a notification (can be a JS alert) that save will happen.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Important things to consider
 
-### Premium Partners
+To build the code, Laravel 8 and PHP 7.4 were used, as well as the help of MySQL
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+The code was made using image manipulation tools, so it is necessary that PHP has the extension php7.4-gd
 
-## Contributing
+For the data cache, Redis was used, so you should be able to access Redis for the code to work.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Laravel's own file was used for the queue;
 
-## Code of Conduct
+it is worth remembering that the pixabay key must be changed in the ".env" file, the PIXABAY_KEY key must be used for this
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Em caso de dúvidas contactar o criador pelo email: lucasfranson27@gmail.com
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This App was make for Lucas, if you use this code please reference the author.
