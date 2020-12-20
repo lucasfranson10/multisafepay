@@ -16,7 +16,7 @@
 			@foreach($photos as $element)
 				<div class="gallery-item" tabindex="0">
 
-					<img src={{ "/storage/" . $element->photo}} class="gallery-image" alt="">
+					<img src={{ "/storage/" . $element->photo}} class="gallery-image-saved" alt="">
 					 <img src="{{ base64_decode($element->thumb) }}" alt="" >
 
 				</div>

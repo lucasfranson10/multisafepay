@@ -308,6 +308,13 @@ img {
     object-fit: cover;
 }
 
+.gallery-image-saved{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
 /* Loader */
 
 .loader {
