@@ -1,5 +1,8 @@
 @extends('layout')
 
+
+
+
 @section('content')
 
 
@@ -27,3 +30,5 @@
 <!-- partial -->
 
 @endsection
+
+

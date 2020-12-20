@@ -37,15 +37,11 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store()
-    {
-        /* $url = json_decode(request('photo'));
-        $contents = file_get_contents($url);
-        $name = substr($url, strrpos($url, '/') + 1);
-        Storage::put($name, $contents);
-        Photos::firstOrCreate(['photo' => $name,]); */
-        
+    {        
         SaveImage::dispatch(request('photo'));
-        return redirect(route('photos.index'));;
+        return redirect()
+                ->back() 
+                ->with('alert', 'Save will happen!');
     }
 
     /**
