@@ -10,8 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Photos;
-use ErrorException;
-use Exception;
+use Intervention\Image\Facades\Image;
 
 
 class SaveImage implements ShouldQueue
@@ -40,8 +39,14 @@ class SaveImage implements ShouldQueue
             $url = json_decode($this->input);
             $contents = file_get_contents($url);
             $name = substr($url, strrpos($url, '/') + 1);
+            $blob =  base64_encode($this->resizeImage($contents));
             Storage::put($name, $contents);
-            Photos::firstOrCreate(['photo' => $name,]); 
+            Photos::firstOrCreate(['photo' => $name,
+                                   'thumb' => $blob]); 
             
+    }
+
+    private function resizeImage($contents) : string {
+        return (string) Image::make($contents)->resize(75, 75)->encode('data-url');     
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use App\Jobs\SaveImage;
 use App\Models\Photos;
 
+
 class PhotosController extends Controller
 {
     /**

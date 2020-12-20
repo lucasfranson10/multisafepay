@@ -16,6 +16,7 @@ class PhotosTable extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
             $table->string('photo', 255)->unique();
+            $table->binary('thumb');
             $table->timestamps();
         });
     }
