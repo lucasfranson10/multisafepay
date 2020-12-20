@@ -22,6 +22,7 @@ Use Guzzle for http communication with the API (https://laravel.com/docs/8.x/htt
 Make sure you cache api communication (https://laravel.com/docs/8.x/cache)
 When an save is triggered, use queues to trigger the process (https://laravel.com/docs/8.x/queues) and just display a notification (can be a JS alert) that save will happen.
 
+
 ## Important things to consider
 
 To build the code, Laravel 8 and PHP 7.4 were used, as well as the help of MySQL
@@ -37,6 +38,15 @@ it is worth remembering that the pixabay key must be changed in the ".env" file,
 Php artisan migrate must be run to use the pre-defined settings
 
 If in doubt contact the breeder by email: lucasfranson27@gmail.com
+
+Settings used:
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=redis
+SESSION_CONNECTION=default
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 
 ## License
 
