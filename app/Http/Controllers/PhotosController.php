@@ -56,6 +56,12 @@ class PhotosController extends Controller
         return view('photos.show', ['photos' => Photos::all()]);
     }
 
+    public function download(Photos $photos){
+        return Storage::download($photos->photo);
+    }
+
+
+
 
 
 }

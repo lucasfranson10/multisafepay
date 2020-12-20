@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ PhotosController::Class, 'index' ])->name('photos.index');
 Route::post('/save', [ PhotosController::Class, 'store' ])->name('photos.create');
 Route::get('/saved', [ PhotosController::Class, 'show' ])->name('photos.show');
+Route::get('/download/{photos}', [ PhotosController::Class, 'download' ])->name('photos.download');
 
 
 
