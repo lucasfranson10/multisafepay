@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
-
+use App\Jobs\SaveImage;
 use App\Models\Photos;
 
 class PhotosController extends Controller
@@ -36,15 +36,16 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function store()
     {
-        $url = json_decode(request('photo'));
+        /* $url = json_decode(request('photo'));
         $contents = file_get_contents($url);
         $name = substr($url, strrpos($url, '/') + 1);
         Storage::put($name, $contents);
-        Photos::firstOrCreate(['photo' => $name,]);
+        Photos::firstOrCreate(['photo' => $name,]); */
         
-        return redirect(route('photos.index'));
+        SaveImage::dispatch(request('photo'));
+        return redirect(route('photos.index'));;
     }
 
     /**
