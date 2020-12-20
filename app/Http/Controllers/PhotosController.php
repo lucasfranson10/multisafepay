@@ -11,7 +11,7 @@ use App\Models\Photos;
 class PhotosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of photos.
      * Resources are save in cache by Redis.
      * @return \Illuminate\Http\Response
      */
@@ -33,9 +33,8 @@ class PhotosController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a photo request
      *
-     * @return \Illuminate\Http\Response
      */
     public function store()
     {        
@@ -47,8 +46,6 @@ class PhotosController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show()
@@ -56,12 +53,15 @@ class PhotosController extends Controller
         return view('photos.show', ['photos' => Photos::all()]);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  Photos model
+     * @return \Illuminate\Http\Response
+     */
+
     public function download(Photos $photos){
         return Storage::download($photos->photo);
     }
-
-
-
-
 
 }

@@ -34,7 +34,9 @@ Laravel's own file was used for the queue;
 
 it is worth remembering that the pixabay key must be changed in the ".env" file, the PIXABAY_KEY key must be used for this
 
-Em caso de dúvidas contactar o criador pelo email: lucasfranson27@gmail.com
+Php artisan migrate must be run to use the pre-defined settings
+
+If in doubt contact the breeder by email: lucasfranson27@gmail.com
 
 ## License
 
