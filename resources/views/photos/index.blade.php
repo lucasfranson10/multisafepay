@@ -15,12 +15,6 @@
 
 					<img src={{$photo['largeImageURL']}} class="gallery-image" alt="">
 
-					{{-- <div class="gallery-item-info">
-
-						<h1>teste</h1>
-
-					</div> --}}
-
 					<div>
 						<form id="saveForm" name="saveForm" method="POST" action="/save">
 							@csrf
@@ -35,8 +29,6 @@
 		</div>
 		<!-- End of gallery -->
 
-		{{-- <div class="loader"></div> --}}
-
 	</div>
 	<!-- End of container -->
 
@@ -47,10 +39,30 @@
 
 @section('script')
 	<script>
-		var msg = '{{Session::get('alert')}}';
+		var message = '{{Session::get('alert')}}';
 		var exist = '{{Session::has('alert')}}';
 		if(exist){
-			alert(msg);
+			var title = "Notification";
+			var position = "nfc-bottom-right";
+			var duration = 3000;
+			var theme = "success";
+			var closeOnClick = false;
+			var displayClose = false;
+
+			if(!message) {
+				message = 'You did not enter a message...';
+			}
+
+			window.createNotification({
+				closeOnClick: closeOnClick,
+				displayCloseButton: displayClose,
+				positionClass: position,
+				showDuration: duration,
+				theme: theme
+			})({
+				title: title,
+				message: message
+			});
 		}
 	</script>
 @endsection
