@@ -244,7 +244,8 @@ img {
     color: black;;
     border: none;
     color: white;
-    padding: 4px 98.6px;
+    width: 100%;
+    height: auto;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -304,7 +305,7 @@ img {
 
 .gallery-image {
     width: 100%;
-    height: 100%;
+    height: 93%;
     object-fit: cover;
 }
 
